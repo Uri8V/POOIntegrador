@@ -21,7 +21,6 @@ namespace POOIntegrador.Entidades
         {
             set { deporte = value; }
         }
-
         static Equipo()
         {
             deporte = Deporte.Futbol;

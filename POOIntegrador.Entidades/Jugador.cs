@@ -7,8 +7,6 @@ using System.Xml.Serialization;
 
 namespace POOIntegrador.Entidades
 {
-
-
     public class Jugador:Persona
     {
         private static Tipo tipo;

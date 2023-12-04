@@ -2,10 +2,12 @@
 using POOIntegrador.Entidades;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace POOIntegrador.Consola
 {
@@ -30,18 +32,28 @@ namespace POOIntegrador.Consola
             {
                 Console.WriteLine("No se puede ingresar capitan");
             }
-            //string valor = equipo1;
-            //Serializador<List<Jugador>>.GuardarXml("Jugadores.xml", equipo1.jugadores);
-            //Console.WriteLine(valor);
-            Repositorio repositorio= new Repositorio();
-            if (repositorio.GetCantidad() > 0)
+            string valor = equipo1;
+
+            StringBuilder sb=new StringBuilder();
+            List<Persona> lista= Serializador<List<Persona>>.LeerJson("Equipo.json");
+            foreach (var item in lista)
             {
-                foreach (var item in repositorio.GetLista())
-                {
-                    Console.WriteLine(item.Apellido);
-                }
+                sb.AppendLine($"Nombre: {item.Nombre}");
+                sb.AppendLine($"Apellido: {item.Apellido}");
+                sb.AppendLine("--------");
             }
-       
+            Console.WriteLine(sb);
+
+
+            //Repositorio repositorio= new Repositorio();
+            //if (repositorio.GetCantidad() > 0)
+            //{
+            //    foreach (var item in repositorio.GetLista())
+            //    {
+            //        Console.WriteLine(item.Apellido);
+            //    }
+            //}
+
             Console.ReadLine();
         }
     }
